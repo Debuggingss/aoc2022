@@ -2,8 +2,8 @@ package dev.debuggings.aoc2022.days
 
 object Day3 : Day(3) {
 
-    override fun part1() {
-        val data = getInput()
+    override fun part1(debug: Boolean) {
+        val data = getInput(debug)
 
         var sum = 0
 
@@ -25,8 +25,8 @@ object Day3 : Day(3) {
         println("\nAnswer: $sum")
     }
 
-    override fun part2() {
-        val data = getInput()
+    override fun part2(debug: Boolean) {
+        val data = getInput(debug)
 
         var sum = 0
 

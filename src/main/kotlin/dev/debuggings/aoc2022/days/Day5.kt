@@ -2,11 +2,11 @@ package dev.debuggings.aoc2022.days
 
 object Day5 : Day(5) {
 
-    private val BOX_REGEX = "\\[(\\w)\\]| {4}".toRegex()
-    private val MOVE_REGEX = "move (\\d+) from (\\d+) to (\\d+)".toRegex()
+    private val BOX_REGEX = """\[(\w)]| {4}""".toRegex()
+    private val MOVE_REGEX = """move (\d+) from (\d+) to (\d+)""".toRegex()
 
-    override fun part1() {
-        val data = getInput()
+    override fun part1(debug: Boolean) {
+        val data = getInput(debug)
 
         var stack: MutableList<MutableList<String>> = mutableListOf()
 
@@ -19,7 +19,7 @@ object Day5 : Day(5) {
         stack = stack.map { it.filter { s -> s.isNotEmpty() }.toMutableList() }.toMutableList()
 
         data.trim().split("\n").filter { MOVE_REGEX.containsMatchIn(it) }.forEach {
-            val (_, count, from, to) = MOVE_REGEX.matchEntire(it)!!.groupValues
+            val (count, from, to) = MOVE_REGEX.matchEntire(it)!!.destructured
 
             repeat(count.toInt()) {
                 val box = stack[from.toInt() - 1].first()
@@ -31,8 +31,8 @@ object Day5 : Day(5) {
         println("\nAnswer: ${stack.joinToString("") { it.first() }}")
     }
 
-    override fun part2() {
-        val data = getInput()
+    override fun part2(debug: Boolean) {
+        val data = getInput(debug)
 
         var stack: MutableList<MutableList<String>> = mutableListOf()
 
@@ -45,7 +45,7 @@ object Day5 : Day(5) {
         stack = stack.map { it.filter { s -> s.isNotEmpty() }.toMutableList() }.toMutableList()
 
         data.trim().split("\n").filter { MOVE_REGEX.containsMatchIn(it) }.forEach {
-            val (_, count, from, to) = MOVE_REGEX.matchEntire(it)!!.groupValues
+            val (count, from, to) = MOVE_REGEX.matchEntire(it)!!.destructured
 
             for (i in 0 until count.toInt()) {
                 val box = stack[from.toInt() - 1][count.toInt() - 1 - i]

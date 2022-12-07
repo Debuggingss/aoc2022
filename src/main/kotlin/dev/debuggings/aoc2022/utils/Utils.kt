@@ -4,6 +4,8 @@ import java.net.URL
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
+import java.nio.file.Files
+import java.nio.file.Path
 
 object Utils {
 
@@ -21,5 +23,11 @@ object Utils {
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
 
         return response.body()
+    }
+
+    fun getTestInput(day: Int): String {
+        val path = Path.of("testinputs", "$day.txt")
+
+        return Files.readString(path).replace("\r", "")
     }
 }

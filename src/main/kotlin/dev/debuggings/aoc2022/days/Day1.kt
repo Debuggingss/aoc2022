@@ -2,8 +2,8 @@ package dev.debuggings.aoc2022.days
 
 object Day1 : Day(1) {
 
-    override fun part1() {
-        val data = getInput()
+    override fun part1(debug: Boolean) {
+        val data = getInput(debug)
 
         val calories = mutableListOf<Int>()
         var currentCalories = 0
@@ -20,8 +20,8 @@ object Day1 : Day(1) {
         println("\nAnswer: ${calories.max()}")
     }
 
-    override fun part2() {
-        val data = getInput()
+    override fun part2(debug: Boolean) {
+        val data = getInput(debug)
 
         val calories = mutableListOf<Int>()
         var currentCalories = 0
