@@ -1,6 +1,7 @@
 package dev.debuggings.aoc2022
 
 import dev.debuggings.aoc2022.days.*
+import java.time.LocalDate
 
 val days = mapOf(
     1 to Day1,
@@ -11,11 +12,14 @@ val days = mapOf(
     6 to Day6,
     7 to Day7,
     8 to Day8,
+    9 to Day9,
 )
 
 fun main() {
     print("Enter day: ")
-    val day = readln().toInt()
+    var day = readln()
+
+    if (day.isEmpty()) day = LocalDate.now().dayOfMonth.toString()
 
     print("Enter part: ")
     val part = readln().toInt()
@@ -26,7 +30,7 @@ fun main() {
     if (debug) println("--- RUNNING WITH TEST INPUT ---")
 
     when (part) {
-        1 -> days[day]?.part1(debug)
-        2 -> days[day]?.part2(debug)
+        1 -> days[day.toInt()]?.part1(debug)
+        2 -> days[day.toInt()]?.part2(debug)
     }
 }
