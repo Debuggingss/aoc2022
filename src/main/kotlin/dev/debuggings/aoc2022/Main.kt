@@ -15,6 +15,7 @@ val days = mapOf(
     9 to Day9,
     10 to Day10,
     11 to Day11,
+    12 to Day12,
 )
 
 fun main() {
@@ -24,7 +25,7 @@ fun main() {
     if (day.isEmpty()) day = LocalDate.now().dayOfMonth.toString()
 
     print("Enter part: ")
-    val part = readln().toInt()
+    val part = readln()
 
     print("Debug (Y/N): ")
     val debug = readln().lowercase() == "y"
@@ -32,7 +33,13 @@ fun main() {
     if (debug) println("--- RUNNING WITH TEST INPUT ---")
 
     when (part) {
-        1 -> days[day.toInt()]?.part1(debug)
-        2 -> days[day.toInt()]?.part2(debug)
+        "1" -> days[day.toInt()]?.part1(debug)
+        "2" -> days[day.toInt()]?.part2(debug)
+        else -> {
+            println("\nPart 1")
+            days[day.toInt()]?.part1(debug)
+            println("\nPart 2")
+            days[day.toInt()]?.part2(debug)
+        }
     }
 }
